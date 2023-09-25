@@ -1,0 +1,39 @@
+server:
+  port: ${SERVER_PORT}
+logging:
+  level:
+    ROOT: INFO
+    com.soul.core: DEBUG
+    org.springframework: INFO
+    org.mongodb: ERROR
+spring:
+  data:
+    mongodb:
+      uri: ${DB_URI}
+      database: ${DB_NAME}
+  jackson:
+    default-property-inclusion: non_null
+  devtools:
+    restart:
+      enabled: true
+      additional-exclude: static/**
+    livereload:
+      enabled: true
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: [ 'configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'caches' ]
+application:
+  security:
+    authentication:
+      secret: ${APPLICATION_SECURITY_AUTHENTICATION_SECRET}
+      validity-sec: 3600
+      validity-remember-me-sec: 7200
+    cors:
+      allowed-origin-patterns: "*"
+      allowed-methods: "*"
+      allowed-headers: "*"
+      allow-credentials: true
+    content-security-policy: "default-src 'self'; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
