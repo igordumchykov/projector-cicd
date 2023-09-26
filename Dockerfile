@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk-slim
 
 RUN mkdir /app
-COPY ./build/libs/projector-cicd-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY app.jar /app/app.jar
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
