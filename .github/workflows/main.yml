@@ -100,7 +100,7 @@ jobs:
 #          chmod 600 key.pem
 #      - name: Pull Docker image
 #        run: |
-#          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@your-ec2-instance-ip 'sudo docker pull ${{ DOCKERHUB_NAMESPACE }}/${{ DOCKERHUB_REPOSITORY }}:latest'
+#          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@your-ec2-instance-ip 'sudo docker pull ${{ DOCKERHUB_NAMESPACE }}/${{ DOCKERHUB_REPOSITORY }}:main'
 #      - name: Stop running container
 #        run: |
 #          ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@your-ec2-instance-ip 'sudo docker stop app || true'
@@ -119,4 +119,4 @@ jobs:
 #              --env INIT_USER_PASSWORD_LIST=${{ secrets.INIT_USER_PASSWORD_LIST }} \
 #              --env DB_NAME=${{ secrets.DB_NAME }} \
 #              --env DB_URI=${{ secrets.DB_URI }} \
-#              -d --name app -p 8080:8080 ${{ DOCKERHUB_NAMESPACE }}/${{ DOCKERHUB_REPOSITORY }}:latest'
+#              -d --name app -p 8080:8080 ${{ DOCKERHUB_NAMESPACE }}/${{ DOCKERHUB_REPOSITORY }}:main'
